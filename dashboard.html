@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head><title>Dashboard</title></head>
+<body>
+
+<h2>Dashboard</h2>
+
+<button onclick="loadData()">Load Protected Data</button>
+<button onclick="logout()">Logout</button>
+
+<p id="result"></p>
+
+<script src="auth.js"></script>
+<script>
+
+function loadData() {
+    fetchWithAuth("/auth/home")
+        .then(res => res.text())
+        .then(data => result.innerText = data)
+        .catch(() => console.log("session expired"));
+}
+
+// auto check on page load
+loadData();
+</script>
+
+</body>
+</html>
