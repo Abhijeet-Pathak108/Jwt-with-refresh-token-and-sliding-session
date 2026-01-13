@@ -13,11 +13,16 @@
 <script src="auth.js"></script>
 <script>
 
+
 function loadData() {
     fetchWithAuth("/auth/home")
         .then(res => res.text())
-        .then(data => result.innerText = data)
-        .catch(() => console.log("session expired"));
+        .then(data => 
+        {result.innerText = data})
+        .catch(() =>{
+             console.log("session expired")
+             window.location.href="login.html"
+});
 }
 
 // auto check on page load
